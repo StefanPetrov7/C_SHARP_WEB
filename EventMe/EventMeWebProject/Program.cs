@@ -19,7 +19,10 @@ namespace EventMeWebProject
             builder.Services.AddDbContext<EventMeDbContext>(cfg => cfg.UseSqlServer(connectionString));  // using dependency injection to add the DBContext = using MS Dependency Injection pkg.
             builder.Services.AddScoped<IEventService, EventService>();   // Register the new service 
 
+            // Application pipe line strats from here:
+
             WebApplication app = builder.Build();
+
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
@@ -30,8 +33,11 @@ namespace EventMeWebProject
             }
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
 
+            // Used for loading all CSS and JS files
+            app.UseStaticFiles();  
+
+            // For all Actions 
             app.UseRouting();
 
             app.UseAuthorization();
