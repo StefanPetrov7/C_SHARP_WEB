@@ -18,7 +18,10 @@ namespace CinemaApp.Data
 
         }
 
-        public virtual DbSet<Movie> Movies { get; set; } = null!;
+        public virtual DbSet<Movie> Movies { get; set; } = null!;  
+        public virtual DbSet<Cinema> Cinemas { get; set; } = null!;
+        public virtual DbSet<CinemaMovie> CinemaMovies { get; set; } = null!;
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -30,6 +33,7 @@ namespace CinemaApp.Data
             // Using reflection method to check all configuration files in the executing Assembly => CinemaApp.Data
 
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
         }
     }
 }

@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
 
 using CinemaApp.Data;
 using CinemaApp.Data.Models;
 using CinemaApp.Web.ViewModels.Movie;
-using System.Globalization;
+using static CinemaApp.Common.EntityValidationConstants.Movie;
 
 namespace CinemaApp.Web.Controllers
 {
@@ -34,12 +35,12 @@ namespace CinemaApp.Web.Controllers
         public IActionResult Create(AddMovieInputModel inputModel)
         {
 
-            bool isReleasedDateValid = DateTime.TryParseExact(inputModel.ReleaseDate, "yyyy-MM", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime releaseDate);
+            bool isReleasedDateValid = DateTime.TryParseExact(inputModel.ReleaseDate, ReleaseDateFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime releaseDate);
 
             if (!isReleasedDateValid)
             {
                 // Will return the same view "Create" with the same wrong model data!
-                this.ModelState.AddModelError(nameof(inputModel.ReleaseDate), "The Release Date is not in correct format.");
+                this.ModelState.AddModelError(nameof(inputModel.ReleaseDate), String.Format("The Release Date is not in correct format {0}.", ReleaseDateFormat));
                 return View(inputModel);
             }
 
@@ -48,13 +49,13 @@ namespace CinemaApp.Web.Controllers
                 // Will return the same view "Create" with the same wrong model data!
                 return View(inputModel);
             }
-             
-            Movie validatedMovie = new Movie() 
+
+            Movie validatedMovie = new Movie()
             {
                 Title = inputModel.Title,
                 Genre = inputModel.Genre,
-                ReleaseDate = releaseDate,  
-                Director = inputModel.Director, 
+                ReleaseDate = releaseDate,
+                Director = inputModel.Director,
                 Duration = inputModel.Duration,
                 Description = inputModel.Description,
             };

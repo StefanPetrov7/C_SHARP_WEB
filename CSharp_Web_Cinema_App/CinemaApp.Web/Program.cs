@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 
 using CinemaApp.Data;
+using CinemaApp.Web.Infrastructure.Extensions;
 
 namespace CinemaApp.Web
 {
@@ -24,7 +25,7 @@ namespace CinemaApp.Web
             });
             builder.Services.AddControllersWithViews();
 
-            WebApplication app = builder.Build();
+            WebApplication app = builder.Build(); 
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
@@ -37,13 +38,17 @@ namespace CinemaApp.Web
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            app.UseRouting();
+            app.UseRouting(); 
 
             app.UseAuthorization();
 
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+
+            // Our extension method to apply the migrations once the app is started. 
+
+            app.ApplyMigrations();  
 
             app.Run();
         }
