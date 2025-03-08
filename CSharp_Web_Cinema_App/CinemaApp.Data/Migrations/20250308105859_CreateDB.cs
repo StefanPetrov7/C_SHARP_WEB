@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace CinemaApp.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class CreateDb : Migration
+    public partial class CreateDB : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -48,7 +48,8 @@ namespace CinemaApp.Data.Migrations
                 columns: table => new
                 {
                     CinemaId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    MovieId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    MovieId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
                 },
                 constraints: table =>
                 {
@@ -72,10 +73,10 @@ namespace CinemaApp.Data.Migrations
                 columns: new[] { "Id", "Location", "Name" },
                 values: new object[,]
                 {
-                    { new Guid("401ccefd-ff86-4205-812c-aeebd4aaebd0"), "Varna", "Cinemax" },
-                    { new Guid("45139641-564a-4fdc-a384-425eb883485a"), "Ruse", "Cinema City" },
-                    { new Guid("a9a14e26-ea83-4fc7-a6f8-89dbb1445731"), "Plovdiv", "Cinema City" },
-                    { new Guid("d70bd254-a8e6-4a92-be66-3b7b75745f81"), "Sofia", "Cinema City" }
+                    { new Guid("539280f8-91ba-4714-8ebd-59eff7787c6a"), "Plovdiv", "Cinema City" },
+                    { new Guid("59ae1598-9931-43af-bc6c-68f57726625b"), "Varna", "Cinemax" },
+                    { new Guid("5de4277e-5b69-4c48-91cc-3be214461de6"), "Sofia", "Cinema City" },
+                    { new Guid("80b1c58f-5a88-41f3-8a28-e997f678095d"), "Ruse", "Cinema City" }
                 });
 
             migrationBuilder.InsertData(
@@ -83,8 +84,8 @@ namespace CinemaApp.Data.Migrations
                 columns: new[] { "Id", "Description", "Director", "Duration", "Genre", "ReleaseDate", "Title" },
                 values: new object[,]
                 {
-                    { new Guid("0c23ce24-44d9-4172-a78f-47d731f580b5"), "Fantasy movie about kids and magic", "Mike Newel", 147, "Fantasy", new DateTime(2006, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Harry Potter 2" },
-                    { new Guid("da5ac4b0-e08a-440b-8448-0530ba4deb9a"), "Fantasy movie about kids and magic", "Mike Newel", 157, "Fantasy", new DateTime(2005, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Harry Potter" }
+                    { new Guid("9e67d6df-1af6-4146-991e-a01483193e94"), "Fantasy movie about kids and magic", "Mike Newel", 157, "Fantasy", new DateTime(2005, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Harry Potter" },
+                    { new Guid("d403461d-353e-40c1-bf7d-f9444d733a8e"), "Fantasy movie about kids and magic", "Mike Newel", 147, "Fantasy", new DateTime(2006, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Harry Potter 2" }
                 });
 
             migrationBuilder.CreateIndex(

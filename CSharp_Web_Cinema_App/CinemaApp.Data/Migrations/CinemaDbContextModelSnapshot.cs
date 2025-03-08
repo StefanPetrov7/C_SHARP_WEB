@@ -30,6 +30,11 @@ namespace CinemaApp.Data.Migrations
                     b.Property<Guid>("CinemaId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
                     b.HasKey("MovieId", "CinemaId");
 
                     b.HasIndex("CinemaId");
@@ -60,25 +65,25 @@ namespace CinemaApp.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("d70bd254-a8e6-4a92-be66-3b7b75745f81"),
+                            Id = new Guid("5de4277e-5b69-4c48-91cc-3be214461de6"),
                             Location = "Sofia",
                             Name = "Cinema City"
                         },
                         new
                         {
-                            Id = new Guid("a9a14e26-ea83-4fc7-a6f8-89dbb1445731"),
+                            Id = new Guid("539280f8-91ba-4714-8ebd-59eff7787c6a"),
                             Location = "Plovdiv",
                             Name = "Cinema City"
                         },
                         new
                         {
-                            Id = new Guid("45139641-564a-4fdc-a384-425eb883485a"),
+                            Id = new Guid("80b1c58f-5a88-41f3-8a28-e997f678095d"),
                             Location = "Ruse",
                             Name = "Cinema City"
                         },
                         new
                         {
-                            Id = new Guid("401ccefd-ff86-4205-812c-aeebd4aaebd0"),
+                            Id = new Guid("59ae1598-9931-43af-bc6c-68f57726625b"),
                             Location = "Varna",
                             Name = "Cinemax"
                         });
@@ -123,7 +128,7 @@ namespace CinemaApp.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("da5ac4b0-e08a-440b-8448-0530ba4deb9a"),
+                            Id = new Guid("9e67d6df-1af6-4146-991e-a01483193e94"),
                             Description = "Fantasy movie about kids and magic",
                             Director = "Mike Newel",
                             Duration = 157,
@@ -133,7 +138,7 @@ namespace CinemaApp.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("0c23ce24-44d9-4172-a78f-47d731f580b5"),
+                            Id = new Guid("d403461d-353e-40c1-bf7d-f9444d733a8e"),
                             Description = "Fantasy movie about kids and magic",
                             Director = "Mike Newel",
                             Duration = 147,
