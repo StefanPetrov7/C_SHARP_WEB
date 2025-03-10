@@ -125,7 +125,6 @@ namespace CinemaApp.Web.Controllers
             };
 
             return this.View(viewModel);
-
         }
 
         [HttpPost]

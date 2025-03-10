@@ -14,3 +14,4 @@ namespace CinemaApp.Web.ViewModels.Movie
 
     }
 }
+   
