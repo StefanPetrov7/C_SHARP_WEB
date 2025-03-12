@@ -100,7 +100,7 @@ namespace CinemaApp.Web.Areas.Identity.Pages.Account
                 user.Email = Input.Email;
 
                 await _userStore.SetUserNameAsync(user, Input.Username, CancellationToken.None);
-                var result = await _userManager.CreateAsync(user, Input.Password);
+                var result = await _userManager.CreateAsync(user, Input.Password); 
 
                 if (result.Succeeded)
                 {

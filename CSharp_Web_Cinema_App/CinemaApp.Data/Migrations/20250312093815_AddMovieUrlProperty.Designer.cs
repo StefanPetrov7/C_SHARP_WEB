@@ -4,6 +4,7 @@ using CinemaApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CinemaApp.Data.Migrations
 {
     [DbContext(typeof(CinemaDbContext))]
-    partial class CinemaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250312093815_AddMovieUrlProperty")]
+    partial class AddMovieUrlProperty
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -120,7 +123,7 @@ namespace CinemaApp.Data.Migrations
 
                     b.HasIndex("MovieId");
 
-                    b.ToTable("UsersMovies");
+                    b.ToTable("ApplicationUserMovie");
                 });
 
             modelBuilder.Entity("CinemaApp.Data.Models.Cinema", b =>
@@ -146,25 +149,25 @@ namespace CinemaApp.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("0474749b-a1b3-4254-9f68-41a634ac225f"),
+                            Id = new Guid("3baa6fe6-bf5e-466d-8a92-3d1e9900ac2a"),
                             Location = "Sofia",
                             Name = "Cinema City"
                         },
                         new
                         {
-                            Id = new Guid("8a7caa45-57a1-4575-8575-f4b2d9eced90"),
+                            Id = new Guid("74b30951-b32c-47d2-b3ca-592463c577c1"),
                             Location = "Plovdiv",
                             Name = "Cinema City"
                         },
                         new
                         {
-                            Id = new Guid("93aea96e-6fe0-4bf6-a6d0-c0a600fb4d7a"),
+                            Id = new Guid("8cc9806e-db4c-45cb-843d-10096228177e"),
                             Location = "Ruse",
                             Name = "Cinema City"
                         },
                         new
                         {
-                            Id = new Guid("def2dd44-29a7-44fa-9f46-ee1d7702d801"),
+                            Id = new Guid("fbce2760-9a42-4cfe-a295-0d8709932742"),
                             Location = "Varna",
                             Name = "Cinemax"
                         });
@@ -215,7 +218,7 @@ namespace CinemaApp.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("e748306c-56d7-4419-996d-7b0e9b416b13"),
+                            Id = new Guid("3138d15d-e8a5-4cf5-a0aa-83f27ee7ae14"),
                             Description = "Fantasy movie about kids and magic",
                             Director = "Mike Newel",
                             Duration = 157,
@@ -225,7 +228,7 @@ namespace CinemaApp.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("8de7943b-c300-4dca-a20a-7079052824f9"),
+                            Id = new Guid("c3715519-36c5-43ee-a828-0b3a912cba5c"),
                             Description = "Fantasy movie about kids and magic",
                             Director = "Mike Newel",
                             Duration = 147,

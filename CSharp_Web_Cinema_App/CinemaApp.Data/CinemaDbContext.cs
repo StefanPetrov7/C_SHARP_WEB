@@ -22,7 +22,7 @@ namespace CinemaApp.Data
         public virtual DbSet<Movie> Movies { get; set; } = null!;
         public virtual DbSet<Cinema> Cinemas { get; set; } = null!;
         public virtual DbSet<CinemaMovie> CinemaMovies { get; set; } = null!;
-
+        public virtual DbSet<ApplicationUserMovie> UsersMovies { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

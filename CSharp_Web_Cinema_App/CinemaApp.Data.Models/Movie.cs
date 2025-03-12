@@ -20,6 +20,8 @@ namespace CinemaApp.Data.Models
 
         public string Description { get; set; } = null!;
 
+        public string? ImageUrl  { get; set; } 
+
         public virtual ICollection<CinemaMovie> MovieCinemas { get; set; } = new HashSet<CinemaMovie>();
 
         public virtual ICollection<ApplicationUserMovie> MovieApplicationUsers { get; set; } = new HashSet<ApplicationUserMovie>();

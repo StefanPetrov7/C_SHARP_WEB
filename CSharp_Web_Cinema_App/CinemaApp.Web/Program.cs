@@ -38,6 +38,11 @@ namespace CinemaApp.Web
               .AddSignInManager<SignInManager<ApplicationUser>>()
               .AddUserManager<UserManager<ApplicationUser>>();
 
+            builder.Services.ConfigureApplicationCookie(cfg =>
+            {
+                cfg.LoginPath = "/Identity/Account/Login";
+            });
+
             builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages();
 
@@ -61,13 +66,6 @@ namespace CinemaApp.Web
 
             // Second we are adding the Authorization -> this can work only if the app knows who is the user (Authentication)
             app.UseAuthorization();
-
-            // Below was not in the VIDEO >> this will load up directly the log in page
-            //app.MapGet("/", context =>
-            //{
-            //    context.Response.Redirect("/Identity/Account/Login");
-            //    return Task.CompletedTask;
-            //});
 
             app.MapControllerRoute(
                 name: "default",
